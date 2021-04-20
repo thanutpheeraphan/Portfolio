@@ -123,7 +123,7 @@ class _SignFormState extends State<SignForm> {
         hintText: "enter email",
         filled: true,
         fillColor: Color(0xFFFFECDF),
-        suffixIcon: Icon(Icons.mail),
+        suffixIcon: Icon(Icons.person),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
         enabledBorder: OutlineInputBorder(
@@ -172,7 +172,7 @@ class _SignFormState extends State<SignForm> {
         hintText: "enter username",
         filled: true,
         fillColor: Color(0xFFFFECDF),
-        suffixIcon: Icon(Icons.mail),
+        suffixIcon: Icon(Icons.person),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
         enabledBorder: OutlineInputBorder(

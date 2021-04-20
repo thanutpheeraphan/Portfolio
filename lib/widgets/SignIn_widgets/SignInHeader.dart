@@ -10,7 +10,6 @@ class SignInHeader extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 20),
           Text(
             'Sign in',
             style: TextStyle(

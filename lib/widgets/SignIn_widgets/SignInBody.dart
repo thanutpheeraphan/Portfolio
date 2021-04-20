@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/screens/Otp/otp_page.dart';
 
 import 'SignForm.dart';
 import 'SignInHeader.dart';
@@ -14,17 +15,17 @@ class SignInBody extends StatelessWidget {
         width: double.infinity,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-              child: Column(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SignInHeader(),
-              SizedBox(height: 20),
-              // Image.asset('assets/images/portfolio.png', fit: BoxFit.cover),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               SignForm(),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               RaisedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.pushNamed(context, OtpScreen.routeName),
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 color: Color.fromRGBO(255, 149, 24, 0.89),
@@ -42,9 +43,9 @@ class SignInBody extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 50),
             ],
-          )),
+          ),
         ),
       ),
     );
