@@ -48,8 +48,6 @@ class _RecordFormState extends State<RecordForm> {
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.start,
                           //   children: [
-                          Row(
-                            children: [
                               MaterialButton(
                                 onPressed: () {
                                   setState(() {
@@ -65,13 +63,13 @@ class _RecordFormState extends State<RecordForm> {
                                 // padding: EdgeInsets.all(16),
                                 shape: CircleBorder(),
                               ),
-                            ],
-                          ),
                           //   ],
                           // ),
-                          Expanded(
-                            child: SizedBox(
-                              child: ListView.separated(
+                          // Expanded(
+                          //   child: 
+                           SizedBox(
+                             child: 
+                              ListView.separated(
                                   separatorBuilder:
                                       (BuildContext context, int index) =>
                                           const Divider(),
@@ -82,152 +80,155 @@ class _RecordFormState extends State<RecordForm> {
                                     return Row(
                                       children: [
                                         // Spacer(),
-                                        Container(
-                                          constraints: BoxConstraints(
-                                            maxHeight: double.infinity,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.white),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            color: Colors.white,
-                                          ),
-                                          child: Center(
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 30, right: 30),
-                                              child: DropdownButton(
-                                                hint: Text(
-                                                  "school",
-                                                  textAlign: TextAlign.center,
+                                       Container(
+                                            constraints: BoxConstraints(
+                                              maxHeight: double.infinity,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              border:
+                                                  Border.all(color: Colors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 30, right: 30),
+                                                child: DropdownButton(
+                                                  hint: Text(
+                                                    "school",
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  dropdownColor: Colors.white,
+                                                  underline: SizedBox(),
+                                                  value: school,
+                                                  onChanged: (newValue) {
+                                                    setState(() {
+                                                      school = newValue;
+                                                    });
+                                                  },
+                                                  items:
+                                                      schoolList.map((valueItem) {
+                                                    return DropdownMenuItem(
+                                                      value: valueItem,
+                                                      child: Text(valueItem,
+                                                          textAlign:
+                                                              TextAlign.center),
+                                                    );
+                                                  }).toList(),
                                                 ),
-                                                dropdownColor: Colors.white,
-                                                underline: SizedBox(),
-                                                value: school,
-                                                onChanged: (newValue) {
-                                                  setState(() {
-                                                    school = newValue;
-                                                  });
-                                                },
-                                                items:
-                                                    schoolList.map((valueItem) {
-                                                  return DropdownMenuItem(
-                                                    value: valueItem,
-                                                    child: Text(valueItem,
-                                                        textAlign:
-                                                            TextAlign.center),
-                                                  );
-                                                }).toList(),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Spacer(),
+                                        
+                                    //    Spacer(),
                                         //  SizedBox(width:40),
-                                        Container(
-                                          constraints: BoxConstraints(
-                                            maxHeight: double.infinity,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.white),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            color: Colors.white,
-                                          ),
-                                          child: Center(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 30, right: 30),
-                                              child: DropdownButton(
-                                                hint: Text(
-                                                  "type",
-                                                  textAlign: TextAlign.center,
+                                         Container(
+                                            constraints: BoxConstraints(
+                                              maxHeight: double.infinity,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              border:
+                                                  Border.all(color: Colors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 30, right: 30),
+                                                child: DropdownButton(
+                                                  hint: Text(
+                                                    "type",
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  dropdownColor: Colors.white,
+                                                  underline: SizedBox(),
+                                                  value: type,
+                                                  onChanged: (newValue) {
+                                                    setState(() {
+                                                      type = newValue;
+                                                    });
+                                                  },
+                                                  items:
+                                                      typeList.map((valueItem) {
+                                                    return DropdownMenuItem(
+                                                      value: valueItem,
+                                                      child: Text(valueItem,
+                                                          textAlign:
+                                                              TextAlign.center),
+                                                    );
+                                                  }).toList(),
                                                 ),
-                                                dropdownColor: Colors.white,
-                                                underline: SizedBox(),
-                                                value: type,
-                                                onChanged: (newValue) {
-                                                  setState(() {
-                                                    type = newValue;
-                                                  });
-                                                },
-                                                items:
-                                                    typeList.map((valueItem) {
-                                                  return DropdownMenuItem(
-                                                    value: valueItem,
-                                                    child: Text(valueItem,
-                                                        textAlign:
-                                                            TextAlign.center),
-                                                  );
-                                                }).toList(),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        
                                         Spacer(),
                                         // SizedBox(width:40),
-                                        Container(
-                                          constraints: BoxConstraints(
-                                            maxHeight: double.infinity,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.white),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            color: Colors.white,
-                                          ),
-                                          child: Center(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 30, right: 30),
-                                              child: DropdownButton(
-                                                hint: Text(
-                                                  "",
-                                                  textAlign: TextAlign.center,
+                                         Container(
+                                            constraints: BoxConstraints(
+                                              maxHeight: double.infinity,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              border:
+                                                  Border.all(color: Colors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 30, right: 30),
+                                                child: DropdownButton(
+                                                  hint: Text(
+                                                    "",
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  dropdownColor: Colors.white,
+                                                  underline: SizedBox(),
+                                                  value: choose,
+                                                  onChanged: (newValue) {
+                                                    setState(() {
+                                                      choose = newValue;
+                                                    });
+                                                  },
+                                                  items:
+                                                      chooseList.map((valueItem) {
+                                                    return DropdownMenuItem(
+                                                      value: valueItem,
+                                                      child: Row(
+                                                        children: [
+                                                          Text(valueItem,
+                                                              textAlign: TextAlign
+                                                                  .center),
+                                                          Checkbox(
+                                                              value: check,
+                                                              onChanged:
+                                                                  (bool value) {
+                                                                setState(() {
+                                                                  check = value;
+                                                                });
+                                                              }),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  }).toList(),
                                                 ),
-                                                dropdownColor: Colors.white,
-                                                underline: SizedBox(),
-                                                value: choose,
-                                                onChanged: (newValue) {
-                                                  setState(() {
-                                                    choose = newValue;
-                                                  });
-                                                },
-                                                items:
-                                                    chooseList.map((valueItem) {
-                                                  return DropdownMenuItem(
-                                                    value: valueItem,
-                                                    child: Row(
-                                                      children: [
-                                                        Text(valueItem,
-                                                            textAlign: TextAlign
-                                                                .center),
-                                                        Checkbox(
-                                                            value: check,
-                                                            onChanged:
-                                                                (bool value) {
-                                                              setState(() {
-                                                                check = value;
-                                                              });
-                                                            }),
-                                                      ],
-                                                    ),
-                                                  );
-                                                }).toList(),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        
                                         // Spacer(),
                                         //   SizedBox(width:40),
                                       ],
                                     );
                                   }),
-                            ),
-                          ),
+                          //  ),
+                         ),
                         ],
                       ),
                  
