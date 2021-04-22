@@ -20,9 +20,14 @@ class _AddRecordState extends State<AddRecord> {
     this.countLine = countLine;
   }
 
+  List<DropdownMenuItem<String>> _dropDownMenuTypes;
+  List<DropdownMenuItem<String>> _dropDownMenuClass;
+  String _currentType;
+  String _currentClass;
+
   List schoolList = ['sjc', 'cu', 'kmitl', 'tu'];
   List typeList = ['report', 'award'];
-  List chooseList = [
+  List gradeList = [
     'p1',
     'p2',
     'p3',
@@ -40,6 +45,25 @@ class _AddRecordState extends State<AddRecord> {
     'y3',
     'y4'
   ];
+   List cerList = [
+    'swimming',
+    'running',
+    'school council',
+    'good leader',
+    'academic excellence',
+    'basketball',
+    'volleyball'
+
+  ];
+
+  
+  @override
+  void initState() {
+    _dropDownMenuClass = getDropDownMenuClass();
+    _dropDownMenuTypes = [];
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,25 +136,16 @@ class _AddRecordState extends State<AddRecord> {
                           ),
                           dropdownColor: Colors.white,
                           underline: SizedBox(),
-                          value: type,
-                          onChanged: (newValue) {
-                            setState(() {
-                              type = newValue;
-                            });
-                          },
-                          items: typeList.map((valueItem) {
-                            return DropdownMenuItem(
-                              value: valueItem,
-                              child:
-                                  Text(valueItem, textAlign: TextAlign.center),
-                            );
-                          }).toList(),
-                        ),
+                          value: _currentClass,
+                          items: _dropDownMenuClass,
+                          onChanged: changedDropDownClass,
                       ),
                     ),
                   ),
                 ),
+                ),
                 SizedBox(width: 20),
+               
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -152,38 +167,65 @@ class _AddRecordState extends State<AddRecord> {
                           ),
                           dropdownColor: Colors.white,
                           underline: SizedBox(),
-                          value: choose,
-                          onChanged: (newValue) {
-                            setState(() {
-                              choose = newValue;
-                            });
-                          },
-                          items: chooseList.map((valueItem) {
-                            return DropdownMenuItem(
-                              value: valueItem,
-                              child: Row(
-                                children: [
-                                  Text(valueItem, textAlign: TextAlign.center),
-                                  // Checkbox(
-                                  //     value: check,
-                                  //     onChanged: (bool value) {
-                                  //       setState(() {
-                                  //         check = value;
-                                  //       });
-                                  //     }
-                                  //     ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
+                          value: _currentType,
+                          items: _dropDownMenuTypes,
+                          onChanged: changedDropDownType,
+                        
                         ),
                       ),
                     ),
                   ),
                 ),
-              ]))),
+      ]))),
     );
+
 
     // });
   }
+  List<DropdownMenuItem<String>> getDropDownMenuClass() {
+    List<DropdownMenuItem<String>> type = List();
+    for (String statelist in typeList) {
+      type.add(DropdownMenuItem(value: statelist, child: Text(statelist)));
+    }
+    return type;
+  }
+
+  List<DropdownMenuItem<String>> getDropDownMenuGrade() {
+    List<DropdownMenuItem<String>> grade = List();
+    for (String gradelist in gradeList) {
+      grade.add(DropdownMenuItem(value: gradelist, child: Text(gradelist)));
+    }
+    return grade;
+  }
+
+  List<DropdownMenuItem<String>> getDropDownMenuCertificate() {
+    List<DropdownMenuItem<String>> cert = List();
+    for (String cerlist in cerList) {
+      cert.add(DropdownMenuItem(value: cerlist, child: Text(cerlist)));
+    }
+    return cert;
+  }
+
+  void changedDropDownClass(String selectedClass) {
+    setState(() {
+      _currentType = null;
+      _dropDownMenuTypes.clear();
+
+      _currentClass = selectedClass;
+
+      if (selectedClass.toString() == "report") {
+        _dropDownMenuTypes = getDropDownMenuGrade();
+      } else if (selectedClass.toString() == "award") {
+        _dropDownMenuTypes = getDropDownMenuCertificate();
+      }
+    });
+  }
+
+  void changedDropDownType(String selectedType) {
+    setState(() {
+      _currentType = selectedType;
+    });
+  }
+
 }
+

@@ -56,22 +56,22 @@ class _FormRecordState extends State<FormRecord> {
                 ),
               ),
                         AddRecord(this.count.toString()),
-                         Container(
-                child: MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      count -= 1;
-                    });
-                  },
-                  color: Colors.red,
-                  textColor: Colors.white,
-                  child: Icon(
-                    Icons.remove,
-                    size: 20,
-                  ),
-                  shape: CircleBorder(),
-                ),
-              ),
+              //            Container(
+              //   child: MaterialButton(
+              //     onPressed: () {
+              //       setState(() {
+              //         count -= 1;
+              //       });
+              //     },
+              //     color: Colors.red,
+              //     textColor: Colors.white,
+              //     child: Icon(
+              //       Icons.remove,
+              //       size: 20,
+              //     ),
+              //     shape: CircleBorder(),
+              //   ),
+              // ),
                       ],
                     );
                   })
