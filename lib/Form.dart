@@ -7,15 +7,7 @@ class FormRecord extends StatefulWidget {
 }
 
 class _FormRecordState extends State<FormRecord> {
-  String school;
-  String type;
   int count = 1;
-  String choose;
-  bool check = false;
-
-  List schoolList = ['sjc', 'cu', 'kmitl', 'tu'];
-  List typeList = ['report', 'award'];
-  List chooseList = ['p1', 'p2', 'p3'];
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -33,10 +25,56 @@ class _FormRecordState extends State<FormRecord> {
         child: Padding(
           padding: EdgeInsets.all(10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AddRecord(),
-        
+              
+              ListView.separated(
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(
+                        thickness: 2,
+                      ),
+                  shrinkWrap: true,
+                  itemCount: count,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                child: MaterialButton(
+                  onPressed: () {
+                    setState(() {
+                      count += 1;
+                    });
+                  },
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  child: Icon(
+                    Icons.add,
+                    size: 20,
+                  ),
+                  shape: CircleBorder(),
+                ),
+              ),
+                        AddRecord(this.count.toString()),
+                         Container(
+                child: MaterialButton(
+                  onPressed: () {
+                    setState(() {
+                      count -= 1;
+                    });
+                  },
+                  color: Colors.red,
+                  textColor: Colors.white,
+                  child: Icon(
+                    Icons.remove,
+                    size: 20,
+                  ),
+                  shape: CircleBorder(),
+                ),
+              ),
+                      ],
+                    );
+                  })
             ],
           ),
         ),

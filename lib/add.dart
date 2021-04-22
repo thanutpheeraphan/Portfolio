@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 
 class AddRecord extends StatefulWidget {
+  String countLine;
+  AddRecord(String countLine){
+    this.countLine=countLine;
+  }
   @override
-  _AddRecordState createState() => _AddRecordState();
+  _AddRecordState createState() => _AddRecordState(this.countLine);
 }
 
 class _AddRecordState extends State<AddRecord> {
   String school;
   String type;
-  int count = 1;
+
   String choose;
   bool check = false;
+  String countLine;
+  _AddRecordState(String countLine){
+    this.countLine=countLine;
+  }
 
   List schoolList = ['sjc', 'cu', 'kmitl', 'tu'];
   List typeList = ['report', 'award'];
-  List chooseList = ['p1', 'p2', 'p3'];
+  List chooseList = ['p1', 'p2', 'p3','p4', 'p5', 'p6'];
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => const Divider(
-          thickness: 2,
-        ),
-        shrinkWrap: true,
-        itemCount: count,
-        itemBuilder: (BuildContext context, int index) {
-          return Center(
+    return 
+    Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: SingleChildScrollView(
@@ -34,22 +36,7 @@ class _AddRecordState extends State<AddRecord> {
                 child: Row(
                  
                   children: [
-                    Container(
-                      child: MaterialButton(
-                        onPressed: () {
-                          setState(() {
-                            count += 1;
-                          });
-                        },
-                        color: Colors.blue,
-                        textColor: Colors.white,
-                        child: Icon(
-                          Icons.add,
-                          size: 20,
-                        ),
-                        shape: CircleBorder(),
-                      ),
-                    ),
+                    
                     SizedBox(width: 40),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -186,6 +173,6 @@ class _AddRecordState extends State<AddRecord> {
               ),
             ),
           );
-        });
+        // });
   }
 }
