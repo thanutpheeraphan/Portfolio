@@ -27,7 +27,6 @@ class _FormRecordState extends State<FormRecord> {
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               ListView.separated(
                   separatorBuilder: (BuildContext context, int index) =>
                       const Divider(
@@ -36,43 +35,30 @@ class _FormRecordState extends State<FormRecord> {
                   shrinkWrap: true,
                   itemCount: count,
                   itemBuilder: (BuildContext context, int index) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                child: MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      count += 1;
-                    });
-                  },
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  child: Icon(
-                    Icons.add,
-                    size: 20,
-                  ),
-                  shape: CircleBorder(),
-                ),
-              ),
-                        AddRecord(this.count.toString()),
-              //            Container(
-              //   child: MaterialButton(
-              //     onPressed: () {
-              //       setState(() {
-              //         count -= 1;
-              //       });
-              //     },
-              //     color: Colors.red,
-              //     textColor: Colors.white,
-              //     child: Icon(
-              //       Icons.remove,
-              //       size: 20,
-              //     ),
-              //     shape: CircleBorder(),
-              //   ),
-              // ),
-                      ],
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: MaterialButton(
+                              onPressed: () {
+                                setState(() {
+                                  count += 1;
+                                });
+                              },
+                              color: Colors.blue,
+                              textColor: Colors.white,
+                              child: Icon(
+                                Icons.add,
+                                size: 20,
+                              ),
+                              shape: CircleBorder(),
+                            ),
+                          ),
+                          AddRecord(this.count.toString()),
+                        ],
+                      ),
                     );
                   })
             ],
