@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/screens/Otp/otp_page.dart';
+import 'package:portfolio/authentication/authentication_service.dart';
+import 'package:provider/provider.dart';
 
 import 'SignInHeader.dart';
 
@@ -87,9 +88,13 @@ class _SignInBodyState extends State<SignInBody> {
               ),
               RaisedButton(
                 onPressed: () => {
-                  Navigator.pushNamed(context, OtpScreen.routeName),
-                  print(usernameController.text.toString()),
-                  print(passwordController.text.toString()),
+                  context.read<AuthenticationService>().signIn(
+                      email: usernameController.text.trim(),
+                      password: passwordController.text.trim())
+
+                  // Navigator.pushNamed(context, OtpScreen.routeName),
+                  // print(usernameController.text.toString()),
+                  // print(passwordController.text.toString()),
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
