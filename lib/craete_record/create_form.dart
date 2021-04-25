@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/craete_record/createImg.dart';
 import 'package:portfolio/craete_record/createRecord.dart';
+import 'package:portfolio/screens/TablePage.dart';
 
 class CreateForm extends StatefulWidget {
   @override
@@ -33,7 +34,7 @@ class _CreateFormState extends State<CreateForm> {
               onPressed: () => {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CreateRecord()),
+                  MaterialPageRoute(builder: (context) => TablePage()),
                 )
               },
               shape: RoundedRectangleBorder(
