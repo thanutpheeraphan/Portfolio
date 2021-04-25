@@ -12,6 +12,7 @@ class _CreateFormState extends State<CreateForm> {
   Widget build(BuildContext context) {
     return Center(
         child: Column(children: [
+          SizedBox(height:20),
       Text(
         'Type',
         style: TextStyle(

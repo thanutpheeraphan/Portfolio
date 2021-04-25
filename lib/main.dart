@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/craete_record/createImg.dart';
 import 'package:portfolio/craete_record/createRecord.dart';
 import 'package:portfolio/record.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
      
       ),
   //  home: Record(),
-     home: CreateRecord(),
+    //  home: CreateRecord(),
+     home: CreateImg(),
     );
   }
 }
