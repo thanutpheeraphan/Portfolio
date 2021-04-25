@@ -16,6 +16,14 @@ class _RecordScreenState extends State<RecordScreen> {
 
   FormRecord formRecord;
 
+  final AppBar appBar = AppBar(
+    iconTheme: IconThemeData(
+      color: Color(0xFFF2A154),
+    ),
+    centerTitle: true,
+    backgroundColor: Color(0xFF314E52),
+  );
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,6 +50,7 @@ class _RecordScreenState extends State<RecordScreen> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: appBar,
       body: Container(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
