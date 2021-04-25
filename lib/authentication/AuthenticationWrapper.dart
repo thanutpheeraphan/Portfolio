@@ -1,26 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/screens/Otp/otp_page.dart';
-import 'package:portfolio/widgets/SignIn_widgets/SignInBody.dart';
+import 'package:portfolio/NewTempPage.dart';
 import 'package:provider/provider.dart';
 
-class SignInScreen extends StatelessWidget {
-  static String routeName = "/sign_in";
+import '../EmailPasswordScreen.dart';
 
-  const SignInScreen({
+class AuthenticationWrapper extends StatelessWidget {
+  const AuthenticationWrapper({
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return OtpScreen();
+      print("Logged In Successfully");
+      return NewTempPage();
     }
 
-    return Scaffold(
-      body: SignInBody(),
-    );
+    print("Logged Out Successfully");
+    return EmailPasswordScreen();
   }
 }
