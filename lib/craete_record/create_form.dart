@@ -24,8 +24,8 @@ class _CreateFormState extends State<CreateForm> {
         height: 20,
       ),
       Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+       //   mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaisedButton(
               onPressed: () => {},
@@ -45,7 +45,7 @@ class _CreateFormState extends State<CreateForm> {
                 ),
               ),
             ),
-            SizedBox(width: 20),
+            SizedBox(height: 10),
             RaisedButton(
               onPressed: () => {},
               shape: RoundedRectangleBorder(

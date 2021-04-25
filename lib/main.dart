@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
      
       ),
   //  home: Record(),
-    //  home: CreateRecord(),
-     home: CreateImg(),
+     home: CreateRecord(),
+    // home: CreateImg(),
     );
   }
 }
