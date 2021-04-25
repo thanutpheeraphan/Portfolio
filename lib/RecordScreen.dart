@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Form.dart';
+import 'package:portfolio/Model/QueryParameters.dart';
+import 'package:portfolio/Model/Record.dart';
+import 'package:portfolio/Model/School.dart';
 
-class RecordScreen extends StatelessWidget {
+import 'Service/Service.dart';
+
+class RecordScreen extends StatefulWidget {
+  @override
+  _RecordScreenState createState() => _RecordScreenState();
+}
+
+class _RecordScreenState extends State<RecordScreen> {
+  List<QueryParameters> paramList = [];
+
+  FormRecord formRecord;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    formRecord = FormRecord(paramList);
+  }
+
+  void didTapSubmit() {
+    print("didTapSubmit :::::");
+    School school = School(
+      name: "KMITL",
+      records: [
+        Record(
+          name: "record1",
+          reports: ["freshman", "sophmore"],
+        )
+      ],
+    );
+    var response = requestPdf(school);
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -26,12 +61,12 @@ class RecordScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              FormRecord(),
+              formRecord,
               SizedBox(height: 50),
               Container(
                 alignment: Alignment.bottomRight,
                 child: RaisedButton(
-                  onPressed: () => {},
+                  onPressed: didTapSubmit,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   color: Color.fromRGBO(255, 149, 24, 0.89),

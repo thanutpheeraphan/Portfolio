@@ -1,19 +1,11 @@
+import 'package:portfolio/Model/Record.dart';
+import 'package:portfolio/Model/School.dart';
+
 class QueryParameters {
-  String _school;
-  String _record;
-  String _report;
+  int index;
+  School school;
+  Record record;
+  String report;
 
-  QueryParameters(this._school, this._record, this._report);
-
-  String getSchool() {
-    return this._school;
-  }
-
-  String getRecord() {
-    return this._record;
-  }
-
-  String getReport() {
-    return this._report;
-  }
+  QueryParameters(this.index, this.school, this.record, this.report);
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/Model/Record.dart';
 
 class School {
-  final String name;
-  final List<Record> records;
+  String name;
+  List<Record> records;
 
   School({@required this.name, @required this.records});
 
@@ -15,4 +15,21 @@ class School {
           .toList(),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'records': records.map((record) => record.toJson()).toList(),
+      };
+}
+
+class User {
+  String name;
+  String job;
+
+  User({@required this.name, @required this.job});
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'job': job,
+      };
 }

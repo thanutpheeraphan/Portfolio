@@ -1,72 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:multiselect_formfield/multiselect_formfield.dart';
+import 'package:portfolio/Model/QueryParameters.dart';
+import 'Model/Record.dart';
+import 'Model/School.dart';
 
 class DropDownForm extends StatefulWidget {
-  String countLine;
-  DropDownForm(String countLine) {
-    this.countLine = countLine;
-  }
+  List<School> schools;
+  int index;
+  Function test;
+
+  DropDownForm(this.index, this.schools, this.test);
   @override
-  _DropDownFormState createState() => _DropDownFormState(this.countLine);
+  _DropDownFormState createState() =>
+      _DropDownFormState(this.index, this.schools, this.test);
 }
 
 class _DropDownFormState extends State<DropDownForm> {
-  String school;
-  String type;
-  String choose;
-  bool check = false;
-  String countLine;
-  _DropDownFormState(String countLine) {
-    this.countLine = countLine;
-  }
+  final List<School> schools;
+  School selectedSchool;
+  Record selectedRecord;
+  String selectedReport;
+  int index;
+  Function test;
 
-  List<DropdownMenuItem<String>> _dropDownMenuTypes;
-  List<DropdownMenuItem<String>> _dropDownMenuClass;
-  String _currentType;
-  String _currentClass;
-
-  List schoolList = ['sjc', 'cu', 'kmitl', 'tu'];
-  List typeList = ['report', 'award'];
-  List gradeList = [
-    'p1',
-    'p2',
-    'p3',
-    'p4',
-    'p5',
-    'p6',
-    'm1',
-    'm2',
-    'm3',
-    'm4',
-    'm5',
-    'm6',
-    'y1',
-    'y2',
-    'y3',
-    'y4'
-  ];
-  List cerList = [
-    'swimming',
-    'running',
-    'school council',
-    'good leader',
-    'academic excellence',
-    'basketball',
-    'volleyball'
-  ];
-
-  List<String> getUserSelected() {
-    if (school.isNotEmpty && type.isNotEmpty && choose.isNotEmpty)
-      print(school);
-  }
-
-  @override
-  void initState() {
-    _dropDownMenuClass = getDropDownMenuClass();
-    _dropDownMenuTypes = [];
-
-    super.initState();
-  }
+  _DropDownFormState(this.index, this.schools, this.test);
 
   @override
   Widget build(BuildContext context) {
@@ -95,17 +51,23 @@ class _DropDownFormState extends State<DropDownForm> {
                           ),
                           dropdownColor: Colors.white,
                           underline: SizedBox(),
-                          value: school,
+                          value: selectedSchool,
                           onChanged: (newValue) {
                             setState(() {
-                              school = newValue;
+                              if (selectedSchool != null) {
+                                selectedRecord = null;
+                                selectedReport = null;
+                              }
+                              selectedSchool = newValue;
                             });
                           },
-                          items: schoolList.map((valueItem) {
+                          items: schools.map((school) {
                             return DropdownMenuItem(
-                              value: valueItem,
-                              child:
-                                  Text(valueItem, textAlign: TextAlign.center),
+                              value: school,
+                              child: Text(
+                                school.name,
+                                textAlign: TextAlign.center,
+                              ),
                             );
                           }).toList(),
                         ),
@@ -116,28 +78,43 @@ class _DropDownFormState extends State<DropDownForm> {
                 SizedBox(width: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    // constraints: BoxConstraints(
-                    //   maxHeight: double.infinity,
-                    // ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: DropdownButton(
-                          hint: Text(
-                            "type",
-                            textAlign: TextAlign.center,
+                  child: IgnorePointer(
+                    ignoring: selectedSchool == null ? true : false,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 30, right: 30),
+                          child: DropdownButton(
+                            hint: Text(
+                              "Record",
+                              textAlign: TextAlign.center,
+                            ),
+                            dropdownColor: Colors.white,
+                            underline: SizedBox(),
+                            value: selectedRecord,
+                            onChanged: (newValue) {
+                              setState(() {
+                                if (selectedRecord != null) {
+                                  selectedReport = null;
+                                }
+                                selectedRecord = newValue;
+                              });
+                            },
+                            items: selectedSchool == null
+                                ? []
+                                : selectedSchool.records.map((record) {
+                                    return DropdownMenuItem(
+                                      value: record,
+                                      child: Text(record.name,
+                                          textAlign: TextAlign.center),
+                                    );
+                                  }).toList(),
                           ),
-                          dropdownColor: Colors.white,
-                          underline: SizedBox(),
-                          value: _currentClass,
-                          items: _dropDownMenuClass,
-                          onChanged: changedDropDownClass,
                         ),
                       ),
                     ),
@@ -146,28 +123,48 @@ class _DropDownFormState extends State<DropDownForm> {
                 SizedBox(width: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    // constraints: BoxConstraints(
-                    //   maxHeight: double.infinity,
-                    // ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: DropdownButton(
-                          hint: Text(
-                            "",
-                            textAlign: TextAlign.center,
+                  child: IgnorePointer(
+                    ignoring: selectedRecord == null ? true : false,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 30, right: 30),
+                          child: DropdownButton(
+                            hint: Text(
+                              "Report",
+                              textAlign: TextAlign.center,
+                            ),
+                            dropdownColor: Colors.white,
+                            underline: SizedBox(),
+                            value: selectedReport,
+                            onChanged: (newValue) {
+                              setState(() {
+                                selectedReport = newValue;
+                                test(
+                                    index,
+                                    QueryParameters(
+                                      index,
+                                      selectedSchool,
+                                      selectedRecord,
+                                      selectedReport,
+                                    ));
+                              });
+                            },
+                            items: selectedRecord == null
+                                ? []
+                                : selectedRecord.reports.map((report) {
+                                    return DropdownMenuItem(
+                                      value: report,
+                                      child: Text(report,
+                                          textAlign: TextAlign.center),
+                                    );
+                                  }).toList(),
                           ),
-                          dropdownColor: Colors.white,
-                          underline: SizedBox(),
-                          value: _currentType,
-                          items: _dropDownMenuTypes,
-                          onChanged: changedDropDownType,
                         ),
                       ),
                     ),
@@ -175,50 +172,5 @@ class _DropDownFormState extends State<DropDownForm> {
                 ),
               ]))),
     );
-  }
-
-  List<DropdownMenuItem<String>> getDropDownMenuClass() {
-    List<DropdownMenuItem<String>> type = List();
-    for (String statelist in typeList) {
-      type.add(DropdownMenuItem(value: statelist, child: Text(statelist)));
-    }
-    return type;
-  }
-
-  List<DropdownMenuItem<String>> getDropDownMenuGrade() {
-    List<DropdownMenuItem<String>> grade = List();
-    for (String gradelist in gradeList) {
-      grade.add(DropdownMenuItem(value: gradelist, child: Text(gradelist)));
-    }
-    return grade;
-  }
-
-  List<DropdownMenuItem<String>> getDropDownMenuCertificate() {
-    List<DropdownMenuItem<String>> cert = List();
-    for (String cerlist in cerList) {
-      cert.add(DropdownMenuItem(value: cerlist, child: Text(cerlist)));
-    }
-    return cert;
-  }
-
-  void changedDropDownClass(String selectedClass) {
-    setState(() {
-      _currentType = null;
-      _dropDownMenuTypes.clear();
-
-      _currentClass = selectedClass;
-
-      if (selectedClass.toString() == "report") {
-        _dropDownMenuTypes = getDropDownMenuGrade();
-      } else if (selectedClass.toString() == "award") {
-        _dropDownMenuTypes = getDropDownMenuCertificate();
-      }
-    });
-  }
-
-  void changedDropDownType(String selectedType) {
-    setState(() {
-      _currentType = selectedType;
-    });
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Record {
-  final String name;
-  final List<String> reports;
+  String name;
+  List<String> reports;
 
   Record({@required this.name, @required this.reports});
 
@@ -12,4 +12,9 @@ class Record {
       reports: json['reports'].cast<String>(),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'reports': reports,
+      };
 }
