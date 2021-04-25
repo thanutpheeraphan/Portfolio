@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/craete_record/createRecord.dart';
 import 'package:portfolio/record.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -16,8 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
      
       ),
-  //  home: Record(),
-     home: CreateRecord(),
+      home: Record(),
     );
   }
 }
