@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/record.dart';
-import 'package:portfolio/recordForm.dart';
+import 'package:portfolio/RecordScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,10 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-     
-      ),
-      home: Record(),
+      theme: ThemeData(),
+      home: RecordScreen(),
     );
   }
 }

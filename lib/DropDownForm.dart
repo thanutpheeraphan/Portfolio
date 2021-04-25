@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 
-class AddRecord extends StatefulWidget {
+class DropDownForm extends StatefulWidget {
   String countLine;
-  AddRecord(String countLine) {
+  DropDownForm(String countLine) {
     this.countLine = countLine;
   }
   @override
-  _AddRecordState createState() => _AddRecordState(this.countLine);
+  _DropDownFormState createState() => _DropDownFormState(this.countLine);
 }
 
-class _AddRecordState extends State<AddRecord> {
+class _DropDownFormState extends State<DropDownForm> {
   String school;
   String type;
   String choose;
   bool check = false;
   String countLine;
-  _AddRecordState(String countLine) {
+  _DropDownFormState(String countLine) {
     this.countLine = countLine;
   }
 
@@ -45,7 +45,7 @@ class _AddRecordState extends State<AddRecord> {
     'y3',
     'y4'
   ];
-   List cerList = [
+  List cerList = [
     'swimming',
     'running',
     'school council',
@@ -53,10 +53,13 @@ class _AddRecordState extends State<AddRecord> {
     'academic excellence',
     'basketball',
     'volleyball'
-
   ];
 
-  
+  List<String> getUserSelected() {
+    if (school.isNotEmpty && type.isNotEmpty && choose.isNotEmpty)
+      print(school);
+  }
+
   @override
   void initState() {
     _dropDownMenuClass = getDropDownMenuClass();
@@ -67,7 +70,6 @@ class _AddRecordState extends State<AddRecord> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
           padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -78,9 +80,6 @@ class _AddRecordState extends State<AddRecord> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    // constraints: BoxConstraints(
-                    //   maxHeight: double.infinity,
-                    // ),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(25),
@@ -139,13 +138,12 @@ class _AddRecordState extends State<AddRecord> {
                           value: _currentClass,
                           items: _dropDownMenuClass,
                           onChanged: changedDropDownClass,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                ),
                 SizedBox(width: 20),
-               
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -170,18 +168,15 @@ class _AddRecordState extends State<AddRecord> {
                           value: _currentType,
                           items: _dropDownMenuTypes,
                           onChanged: changedDropDownType,
-                        
                         ),
                       ),
                     ),
                   ),
                 ),
-      ]))),
+              ]))),
     );
-
-
-    // });
   }
+
   List<DropdownMenuItem<String>> getDropDownMenuClass() {
     List<DropdownMenuItem<String>> type = List();
     for (String statelist in typeList) {
@@ -226,6 +221,4 @@ class _AddRecordState extends State<AddRecord> {
       _currentType = selectedType;
     });
   }
-
 }
-

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Form.dart';
-import 'package:portfolio/recordForm.dart';
 
-class Record extends StatelessWidget {
+class RecordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -16,7 +15,6 @@ class Record extends StatelessWidget {
             children: [
               Container(
                 height: size.height * .15,
-                // color: Colors.pink,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
