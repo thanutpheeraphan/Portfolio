@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/craete_record/createImg.dart';
+import 'package:portfolio/craete_record/createRecord.dart';
 
 class CreateForm extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class _CreateFormState extends State<CreateForm> {
   Widget build(BuildContext context) {
     return Center(
         child: Column(children: [
-          SizedBox(height:20),
+      SizedBox(height: 20),
       Text(
         'Type',
         style: TextStyle(
@@ -25,10 +27,15 @@ class _CreateFormState extends State<CreateForm> {
       ),
       Center(
         child: Column(
-       //   mainAxisAlignment: MainAxisAlignment.center,
+          //   mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaisedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateRecord()),
+                )
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               color: Color.fromRGBO(255, 149, 24, 0.89),
@@ -47,7 +54,12 @@ class _CreateFormState extends State<CreateForm> {
             ),
             SizedBox(height: 10),
             RaisedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateImg()),
+                )
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               color: Color.fromRGBO(255, 149, 24, 0.89),
