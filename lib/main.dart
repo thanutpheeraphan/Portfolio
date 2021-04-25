@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/routes.dart';
 import 'package:portfolio/screens/Otp/otp_page.dart';
 import 'package:portfolio/screens/SignIn/sign_in.dart';
+import 'package:portfolio/screens/TablePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: routes,
-      initialRoute: SignInScreen.routeName,
+      // routes: routes,
+      // initialRoute: SignInScreen.routeName,
+      home:TablePage(),
     );
   }
 }

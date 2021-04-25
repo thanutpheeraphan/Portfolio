@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/add.dart';
+
 
 TextEditingController nameController = TextEditingController();
 TextEditingController typeController = new TextEditingController();
@@ -136,6 +136,7 @@ class Rec extends StatelessWidget {
             ),
           ),
         ),
+        
       ],
     );
   }
